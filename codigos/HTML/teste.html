@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="quiz-container">
+    <div class="question">
+      <h2>Questão 1:</h2>
+      <p>Qual é a capital do Brasil?</p>
+      <form action="#" method="post">
+        <input type="radio" name="q1" value="a"> A) Rio de Janeiro<br>
+        <input type="radio" name="q1" value="b"> B) São Paulo<br>
+        <input type="radio" name="q1" value="c"> C) Brasília<br>
+        <input type="submit" value="Enviar">
+      </form>
+    </div>
+    
+    <!-- Adicione mais perguntas aqui -->
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+<style>
+    .quiz-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+input[type="submit"] {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+</style>
+
+
+<script>
+    const express = require('express');
+const mysql = require('mysql');
+
+const app = express();
+
+// Configuração do banco de dados
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '140378',
+  database: 'testeP1'
+});
+
+// Conecta ao banco de dados
+connection.connect((err) => {
+  if (err) {
+    console.error('Erro ao conectar ao banco de dados:', err);
+    return;
+  }
+  console.log('Conexão bem sucedida ao banco de dados');
+});
+
+// Rota para obter todas as perguntas
+app.get('/perguntas', (req, res) => {
+  connection.query('SELECT * FROM perguntas', (err, results) => {
+    if (err) {
+      console.error('Erro ao obter perguntas do banco de dados:', err);
+      res.status(500).send('Erro ao obter perguntas do banco de dados');
+      return;
+    }
+    res.json(results);
+  });
+});
+
+// Rota para obter as respostas de uma pergunta específica
+app.get('/respostas/:pergunta_id', (req, res) => {
+  const perguntaId = req.params.pergunta_id;
+  connection.query('SELECT * FROM respostas WHERE pergunta_id = ?', perguntaId, (err, results) => {
+    if (err) {
+      console.error('Erro ao obter respostas do banco de dados:', err);
+      res.status(500).send('Erro ao obter respostas do banco de dados');
+      return;
+    }
+    res.json(results);
+  });
+});
+
+// Outras rotas para inserir, atualizar ou deletar perguntas e respostas
+
+// Inicia o servidor
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`);
+});
+
+</script>

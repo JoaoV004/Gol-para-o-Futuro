@@ -1,0 +1,143 @@
+/* CSS */
+
+/* Reset de margem e preenchimento para o corpo */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para o header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #EF1A2D;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0;
+    height: 10%;
+}
+
+/* Estilo para a imagem no header */
+header img {
+    width: 50px; /* Largura da imagem ajustada */
+}
+
+/* Estilo para a lista de navegação */
+header nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    margin-left: auto; /* Move os itens da lista para o lado direito */
+    margin-right: auto; /* Move os itens da lista para o lado esquerdo */
+}
+
+/* Estilo para os itens da lista */
+header nav ul li {
+    margin-right: 20px; /* Espaçamento entre os itens */
+    position: relative; /* Permite adicionar uma linha após o item */
+}
+
+/* Estilo para os links da lista */
+header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px; /* Preenchimento dos links */
+}
+
+/* Estilo para a linha sob os itens da lista */
+header nav ul li::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* Posiciona a linha abaixo do texto */
+    left: 0;
+    width: 0; /* Largura inicial */
+    height: 2px; /* Altura da linha */
+    background-color: #fff; /* Cor da linha */
+    transition: width 0.3s ease; /* Transição suave para largura */
+}
+
+/* Estilo para a linha sob os itens da lista quando hover */
+header nav ul li:hover::after {
+    width: 100%; /* Largura total ao passar o mouse */
+}
+
+/* Estilo para os botões de navegação */
+.botaoNav,
+.botaoNav1 {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.botaoNav:hover,
+.botaoNav1:hover {
+    background-color: #00a551;
+    color: #fff;
+}
+
+/* Estilo para a primeira section */
+.primeirasection {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: 1s;
+}
+
+.carousel-item {
+    min-width: 100%;
+    height: 885px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+/* Estilo para a segunda section */
+.frase-section {
+    position: relative;
+    background-image: url('/images/imageYellow.jpg');
+    background-size: cover;
+    color: #fff;
+    padding: 100px 20px;
+    text-align: center;
+    height: 885px;
+    width: 100%;
+}
+
+.frase-container {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 40%;
+    margin: 0 auto;
+    height: 100px;
+}
+
+.frase-text {
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* Estilo para a seção de desenvolvedor */
+.desenvolvedor {
+    /* Adicione estilos conforme necessário */
+}
