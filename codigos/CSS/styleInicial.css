@@ -1,16 +1,3 @@
-/* Reset de margem e preenchimento para o corpo */
-@keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 
 body {
     margin: 0;
@@ -27,6 +14,10 @@ header {
     padding: 10px 20px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
 header img {
@@ -69,6 +60,7 @@ header nav ul li:hover::after {
 
 .nav-buttons {
     display: flex;
+    margin-right: 10px;
 }
 
 .botaoNav,
@@ -82,21 +74,21 @@ header nav ul li:hover::after {
 
 .botaoNav:hover,
 .botaoNav1:hover {
-    background-color: #004D98;
+    background-color: #eb746f;
     color: #fff;
-
 }
 
 /* Estilo para a primeira section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/web-data-viz/public/assets/imgs/vista-de-uma-bola-de-futebol-no-campo.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/codigos/CSS/imgs/vista-de-uma-bola-de-futebol-no-campo.jpg') no-repeat center center/cover;
     color: white;
     display: flex;
-    justify-content: flex-start; 
+    justify-content: flex-start;
     align-items: center;
     text-align: left;
     padding: 0 20px;
+    margin-top: 60px; /* Ajusta para compensar o header fixo */
 }
 
 .hero-content {
@@ -116,38 +108,16 @@ header nav ul li:hover::after {
     line-height: 1.6;
 }
 
-.btn {
-    display: inline-block;
-    padding: 15px 30px;
-    font-size: 1em;
-    color: white;
-    background-color: #DB0030;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    animation: blink 3.5s infinite;
-}
-
-
-
-img {
-    width: 100%;
-    height: auto;
-}
-
-
-
 /* Estilo para a segunda section */
 .frase-section {
     height: 100vh;
-    background-color: #00529F; 
-    color: #fff;
+    background-color: rgba(248, 236, 236, 0.8);
+    color: #0a0a0a;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 50px 20px; /
+    padding: 50px 20px;
 }
 
 .frase-content {
@@ -177,84 +147,160 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-basis: calc(33.33% - 40px); /* Para 3 ícones por linha, dividimos igualmente o espaço disponível */
+    flex-basis: calc(33.33% - 40px);
 }
 
 @media (max-width: 767px) {
     .icon-container {
-        flex-basis: calc(50% - 40px); /* Para telas menores, 2 ícones por linha */
+        flex-basis: calc(50% - 40px);
     }
 }
-
 
 .icon-container img {
     width: 50px;
     margin-bottom: 10px;
 }
 
-#fade {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 5;
+.btn {
+    display: inline-block;
+    padding: 10px 20px; /* Reduzindo o padding */
+    font-size: 0.9em; /* Reduzindo o tamanho da fonte */
+    color: white;
+    background-color: #DB0030;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    animation: blink 3.5s infinite;
 }
 
-
-#modal {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    background-color: #fff;
-    z-index: 10;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    max-width: 90%;
-    padding: 1.2rem;
-    border-radius: 0.5rem;
-
+/* Adicionando media query para botão "Saiba Mais" em telas menores */
+@media (max-width: 767px) {
+    .btn {
+        padding: 8px 16px; /* Reduzindo ainda mais o padding */
+        font-size: 0.8em; /* Reduzindo ainda mais o tamanho da fonte */
+    }
 }
 
-#modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
+/* Section Desenvolvedor */
+.developer-section {
+    background: linear-gradient(rgba(248, 236, 236, 0.8), rgba(255, 13, 13, 0.8)), url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+    background-size: cover;
+    padding: 50px 20px;
+    text-align: center;
+    position: relative;
 }
 
-.modal-body{
-        margin-bottom: 1rem;
+.developer-section h1 {
+    color: #000000; /* Amarelo */
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    font-weight: bold;
 }
 
-
-#modal.hide,
-#fade.hide {
-    opacity: 0;
-}
-
-
-/* Estilo para a seção de desenvolvedor */
-#desenvolvedor {
-    height: 100vh;
+.developer-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 50px; /* Ajusta a posição da foto e do título */
 }
 
-#desenvolvedor h1 {
-    margin-bottom: 20px;
+.developer-photo {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    margin: 0 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#desenvolvedor img {
-    max-width: 300px;
+.developer-photo img {
     width: 100%;
-    height: auto;
-    margin: 0 auto;
+    height: 100%;
+    object-fit: cover;
 }
+
+.developer-info {
+    max-width: 600px;
+    text-align: left;
+    margin: 20px;
+    font-size: 1.1em;
+    line-height: 1.8em; /* Aumenta o espaçamento entre linhas */
+    color: #fff; /* Altera a cor do texto para branco */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    gap: 1rem;
+}
+
+.developer-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.developer-info ul li {
+    background: #000000; /* Fundo branco semi-transparente */
+    color: #ffffff; /* Texto branco */
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.developer-info ul li::before {
+    content: "✔";
+    margin-right: 10px;
+    color: #2a8639; /* Marca de verificação amarela */
+}
+
+.developer-intro {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(214, 226, 236, 0.9);
+    color: #000000;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    animation: slideIn 1s ease-out;
+    text-align: left;
+    max-width: 300px;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.contact-info {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente o texto e os ícones */
+    justify-content: flex-end; /* Centraliza horizontalmente o texto e os ícones */
+    margin-bottom: 20px; /* Espaçamento inferior para separar da próxima seção */
+    gap: 25px;
+    color: #000000;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center; /* Centraliza os ícones verticalmente */
+}
+
+.social-icons a {
+    margin-right: 10px; /* Espaçamento entre os ícones */
+}
+
+.social-icons img {
+    width: 50px; /* Define o tamanho dos ícones */
+    height: 50px; /* Define o tamanho dos ícones */
+}
+
+
+
 

@@ -1,108 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Futebol</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .quiz-container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 {
+            color: #0275d8;
+        }
+        .question {
+            margin: 20px 0;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0275d8;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #025aa5;
+        }
+    </style>
 </head>
 <body>
-  <div class="quiz-container">
-    <div class="question">
-      <h2>Questão 1:</h2>
-      <p>Qual é a capital do Brasil?</p>
-      <form action="#" method="post">
-        <input type="radio" name="q1" value="a"> A) Rio de Janeiro<br>
-        <input type="radio" name="q1" value="b"> B) São Paulo<br>
-        <input type="radio" name="q1" value="c"> C) Brasília<br>
-        <input type="submit" value="Enviar">
-      </form>
+    <div class="quiz-container">
+        <h1>Quiz de Futebol</h1>
+        <form action="#" method="post">
+            <div class="question">
+                <label for="liga">Qual liga você mais assistiu nos últimos dois anos?</label>
+                <select id="liga" name="liga">
+                    <option value="brasileirao">Brasileirão</option>
+                    <option value="premier_league">Premier League</option>
+                    <option value="la_liga">La Liga</option>
+                    <option value="serie_a">Série A (Itália)</option>
+                    <option value="bundesliga">Bundesliga</option>
+                    <option value="ligue_1">Ligue 1</option>
+                    <option value="mls">MLS</option>
+                    <option value="outra">Outra</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="time">Que time você torce?</label>
+                <select id="time" name="time">
+                    <option value="#" selected >Selecione um time</option>
+                    <option value="flamengo">Flamengo</option>
+                    <option value="corinthians">Corinthians</option>
+                    <option value="sao_paulo">São Paulo</option>
+                    <option value="palmeiras">Palmeiras</option>
+                    <option value="vasco">Vasco</option>
+                    <option value="gremio">Grêmio</option>
+                    <option value="internacional">Internacional</option>
+                    <option value="cruzeiro">Cruzeiro</option>
+                    <option value="atletico_mg">Atlético Mineiro</option>
+                    <option value="santos">Santos</option>
+                    <option value="outros">Outros</option>
+                    <!-- Adicione outros times populares conforme necessário -->
+                </select>
+            </div>
+            <div class="question">
+                <label for="idade">Qual a sua idade?</label>
+                <input type="number" id="idade" name="idade" min="1" max="120" required>
+            </div>
+            <button type="submit" onclick="">Enviar</button>
+        </form>
     </div>
-    
-    <!-- Adicione mais perguntas aqui -->
-  </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
-
-
-<style>
-    .quiz-container {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.question {
-  margin-bottom: 20px;
-}
-
-input[type="radio"] {
-  margin-right: 10px;
-}
-
-input[type="submit"] {
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-</style>
-
-
-<script>
-    const express = require('express');
-const mysql = require('mysql');
-
-const app = express();
-
-// Configuração do banco de dados
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '140378',
-  database: 'testeP1'
-});
-
-// Conecta ao banco de dados
-connection.connect((err) => {
-  if (err) {
-    console.error('Erro ao conectar ao banco de dados:', err);
-    return;
-  }
-  console.log('Conexão bem sucedida ao banco de dados');
-});
-
-// Rota para obter todas as perguntas
-app.get('/perguntas', (req, res) => {
-  connection.query('SELECT * FROM perguntas', (err, results) => {
-    if (err) {
-      console.error('Erro ao obter perguntas do banco de dados:', err);
-      res.status(500).send('Erro ao obter perguntas do banco de dados');
-      return;
-    }
-    res.json(results);
-  });
-});
-
-// Rota para obter as respostas de uma pergunta específica
-app.get('/respostas/:pergunta_id', (req, res) => {
-  const perguntaId = req.params.pergunta_id;
-  connection.query('SELECT * FROM respostas WHERE pergunta_id = ?', perguntaId, (err, results) => {
-    if (err) {
-      console.error('Erro ao obter respostas do banco de dados:', err);
-      res.status(500).send('Erro ao obter respostas do banco de dados');
-      return;
-    }
-    res.json(results);
-  });
-});
-
-// Outras rotas para inserir, atualizar ou deletar perguntas e respostas
-
-// Inicia o servidor
-const port = 3000;
-app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
-});
-
-</script>
