@@ -1,61 +1,78 @@
-<!doctype html>
-<html lang="pt-br"">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>F1 Mundo</title>
-    <link rel="stylesheet" href="/codigos/CSS/styleInicial.css">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gol para o Futuro</title>
+    <link rel="stylesheet" href="/web-data-viz/public/css/styleInicial.css">
     <link rel="icon" href="/web-data-viz/public/assets/icon/shot.png">
-  </head>
-  <body>
-    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+<body>
     <header>
-      <nav>
-        
-        <ul>
-          <img src="/images/jogador-de-futebol.png" alt="" style="display: flex; width: 10%; height: 7%;">
-          <li><a href="telaInicial.html">Home</a></li>
-          <li><a href="#ods">Entenda o Projeto</a></li>
-          <li><a href="#desenvolvedor">Desenvolvedor</a></li>
-        </ul>
-      </nav>
-      <a href="cadastro.html">
-        <button class="botaoNav" onclick="cadastrar()">SIGN UP</button>
-      </a>
-      <a href="login.html">
-        <button class="botaoNav1" onclick="logar()">LOGIN</button>
-      </a>
-      
-    </header>
-    
-
-    <section class="primeirasection" id="home">
-      <img src="/images/HD wallpaper_ Pele_ Birth of a Legend, Brazilian footballer, 4K.jpeg" alt="" style="height: 685px;">
+        <nav>
+            <ul>
+                <li>
+                    <img src="/web-data-viz/public/assets/icon/soccer-player.png" alt="Logo" style="width: 50px;">
+                </li>
+                <li><a href="telaInicial.html">Home</a></li>
+                <li><a href="#ods">Entenda o Projeto</a></li>
+                <li><a href="#desenvolvedor">Desenvolvedor</a></li>
+            </ul>
+        </nav>
+        <div class="nav-buttons">
+            <a href="cadastro.html">
+                <button class="botaoNav" onclick="cadastrar()">SIGN UP</button>
+            </a>
+            <a href="login.html">
+                <button class="botaoNav1" onclick="logar()">LOGIN</button>
+            </a>
         </div>
-      </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Futebol: Mais que um Esporte</h1>
+            <p>Descubra como o futebol pode salvar sua vida, promovendo saúde física e mental, fortalecendo laços sociais e proporcionando momentos inesquecíveis.</p>
+            <a href="#ods" class="btn">Saiba Mais</a>
+        </div>
     </section>
 
     <section class="frase-section" id="ods">
-      <h1></h1>
-      <p>
+    <div class="frase-content">
+        <h1>Futebol e os Objetivos de Desenvolvimento Sustentável (ODS)</h1>
+        <p>O futebol desempenha um papel fundamental na promoção dos Objetivos de Desenvolvimento Sustentável (ODS) da ONU. Ele contribui para o alcance de metas como saúde e bem-estar, igualdade de gênero, educação de qualidade, redução das desigualdades e construção de comunidades mais sustentáveis.</p>
+        <div class="icons">
+            <div class="icon-container">
+                <img src="/web-data-viz/public/assets/icon/health.png" alt="Saúde">
+                <span>Saúde</span>
+            </div>
+            <div class="icon-container">
+                <img src="/web-data-viz/public/assets/icon/equality.png" alt="Igualdade de gênero">
+                <span>Igualdade de Gênero</span>
+            </div>
+            <div class="icon-container">
+                <img src="/web-data-viz/public/assets/icon/health.png" alt="Educação de qualidade">
+                <span>Educação de Qualidade</span>
+            </div>
+            <div class="icon-container">
+                <img src="/web-data-viz/public/assets/icon/inequality.png" alt="Redução das desigualdades">
+                <span>Redução das Desigualdades</span>
+            </div>
+            <div class="icon-container">
+                <img src="/web-data-viz/public/assets/icon/city.png" alt="Comunidades sustentáveis">
+                <span>Comunidades Sustentáveis</span>
+            </div>
+        </div>
+    </div>
+</section>
 
-      </p>
-    </section>
+
+
+
     <section id="desenvolvedor">
-
-
-      <img src="/images/SENNA.png" alt="">
-
-
+        <h1>Desenvolvedor</h1>
+        <img src="/images/SENNA.png" alt="Desenvolvedor">
     </section>
-    
-    
-  
-
-    
-    
-
-  </body>
+</body>
 </html>
-
-<script src="/codigos/JS/script.js"></script>
