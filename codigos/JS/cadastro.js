@@ -3,17 +3,13 @@
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    // var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    // var empresaVar = listaEmpresas.value
+    let nomeVar = nome_input.value;
+    let emailVar = email_input.value;
+    let senhaVar = senha_input.value;
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" 
-      // confirmacaoSenhaVar == "" ||
-      // empresaVar == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
