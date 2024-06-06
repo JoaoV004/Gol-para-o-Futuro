@@ -1,12 +1,6 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
+show databases;
 
-/*
-comandos para mysql server
-*/
-
-CREATE DATABASE gol_futuro;
+create database gol_futuro;
 
 USE gol_futuro;
 
@@ -18,15 +12,6 @@ CREATE TABLE usuario (
 	senha VARCHAR(50)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
-);
-
-
 create table quiz (
 	idQuiz INT PRIMARY KEY AUTO_INCREMENT,
 	liga varchar(30),
@@ -37,13 +22,19 @@ create table quiz (
 
 
 
-select * from aviso;
+create view vw_maiores_torcidas as 
+select timeSelecionado, COUNT(*) as quantidade
+from quiz
+group by timeSelecionado;
 
-select timeSelecionado from quiz
-where timeSelecionado = 'flamengo';
+create view vw_ligas_assistidas as 
+select liga, COUNT(*) as quantidade
+from quiz
+group by liga;
 
 
-truncate table usuario;
-use gol_futuro;
+alter table usuario add constraint 
+
+select * from vw_ligas_assistidas;
 
 

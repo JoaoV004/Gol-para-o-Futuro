@@ -18,18 +18,47 @@ CREATE TABLE usuario (
 	senha VARCHAR(50)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
-);
 
 
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	momento DATETIME,
+
+create table quiz (
+	idQuiz INT PRIMARY KEY AUTO_INCREMENT,
+	liga varchar(30),
+    timeSelecionado varchar(30),
     fkUsuario int,
     foreign key (fkUsuario) references usuario(id)
 );
+
+
+use gol_futuro;
+select * from usuario;
+truncate table quiz;
+
+create view vw_maiores_torcidas as 
+select timeSelecionado, COUNT(*) as quantidade
+from quiz
+group by timeSelecionado;
+
+create view vw_ligas_assistidas as 
+select liga, COUNT(*) as quantidade
+from quiz
+group by liga;
+
+
+select * from vw_ligas_assistidas;
+select * from vw_maiores_torcidas;
+
+
+create view  vw_liga_mais_assistidas as 
+select liga, COUNT(*) as total 
+from quiz 
+group by liga 
+order by total desc limit 1;
+
+select * from vw_liga_mais_assistidas;
+
+
+
+
+
+
